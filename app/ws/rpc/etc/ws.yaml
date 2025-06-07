@@ -1,0 +1,42 @@
+Name: ws
+Host: 0.0.0.0
+Port: 5005
+
+Log:
+  ServiceName: ws
+  #  Mode: volume
+  Encoding: plain
+  Path: logs
+  Level: info
+  TimeFormat: "2006-01-02 15:04:05"
+
+RedisConf:
+  Host: 127.0.0.1:6379
+  Pass: ""
+  Type: node
+
+GuildRpcConf:
+  Endpoints:
+    - 127.0.0.1:5007
+  NonBlock: true
+
+MessageRpcConf:
+  Endpoints:
+    - 127.0.0.1:5006
+  NonBlock: true
+
+KqConsumerConf:
+  Name: "broadcast-consumer"
+  Brokers:
+    - 127.0.0.1:9094
+  Group: "broadcast-consumer"
+#  Group: ""
+  Topic: "broadcast-ws"
+  Offset: first
+  Consumers: 8
+  Processors: 8
+
+KqPusherConf:
+  Brokers:
+    - 127.0.0.1:9094
+  Topic: "broadcast-ws"

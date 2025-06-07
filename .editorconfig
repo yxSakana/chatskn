@@ -1,0 +1,29 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+insert_final_newline = true
+max_line_length = 120
+
+[{*.go,*.go2}]
+indent_style = tab
+indent_size = 2
+
+[{*.har,*.jsb2,*.jsb3,*.json,*.jsonc,*.postman_collection,*.postman_collection.json,*.postman_environment,*.postman_environment.json,.babelrc,.eslintrc,.stylelintrc,.ws-context,jest.config}]
+tab_width = 4
+
+[{*.htm,*.html,*.sht,*.shtm,*.shtml}]
+indent_size = 4
+tab_width = 4
+
+[{*.markdown,*.md}]
+indent_size = 4
+tab_width = 4
+
+[{*.yml, *.json}]
+indent_size = 2
+
+[*.sql]
+indent_size = 2

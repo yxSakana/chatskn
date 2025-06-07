@@ -1,0 +1,16 @@
+syntax = "v1"
+
+type WsConnectReq {
+	Id int64 `path:"id"`
+}
+
+@server (
+	prefix: api/v1/ws
+	group:  ws
+)
+service ws {
+	@doc "connect"
+	@handler connectWs
+	get /connect/:id (WsConnectReq)
+}
+

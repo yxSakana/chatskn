@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+package pb;
+
+// -- message --
+// -- model --
+message Message {
+  int64 sender_id = 1;
+  int64 receiver_id = 2;
+  int64 channel_id = 3;
+  string type = 4;
+  string content = 5;
+}
+// -- req --
+message StorageReq {
+  Message msg = 1;
+}
+message StorageResp {
+  int64 id = 1;
+}
+
+// -- service --
+service message {
+  rpc storage(StorageReq) returns(StorageResp);
+}
