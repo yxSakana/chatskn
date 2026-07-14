@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/elastic/go-elasticsearch/v8"
 	"github.com/zeromicro/go-zero/core/stores/cache"
 	"github.com/zeromicro/go-zero/zrpc"
 )
@@ -10,5 +11,6 @@ type Config struct {
 	DB struct {
 		DataSource string
 	}
-	Cache cache.CacheConf
+	Cache             cache.CacheConf
+	ElasticSearchConf elasticsearch.Config
 }

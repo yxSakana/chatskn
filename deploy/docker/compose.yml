@@ -21,25 +21,56 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_NUM_PARTITIONS: 3
-    networks:
-      - gs_net
+#    networks:
+#      - gs_net
 #      KAFKA_LOG_DIRS: /var/lib/kafka/data
 #    volumes:
 #      - ./data/kafka/data:/var/lib/kafka/data
-  kafka-ui:
-    image: provectuslabs/kafka-ui:latest
-    container_name: kafka-ui
-    ports:
-      - "8080:8080"
-    environment:
-      KAFKA_CLUSTERS_0_NAME: "local"
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka:9092"
-      KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: "PLAINTEXT"
-    depends_on:
-      - kafka
-    networks:
-      - gs_net
-
+#  kafka-ui:
+#    image: provectuslabs/kafka-ui:latest
+#    container_name: kafka-ui
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      KAFKA_CLUSTERS_0_NAME: "local"
+#      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka:9092"
+#      KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: "PLAINTEXT"
+#    depends_on:
+#      - kafka
+#    networks:
+#      - gs_net
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.4
+#    container_name: gs-elasticsearch
+#    restart: unless-stopped
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#    networks:
+#      - gs_net
+#    environment:
+#      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"  # 初始堆大小、最大堆大小
+#      - "TZ=Asia/Shanghai"
+#      - "discovery.type=single-node" # 单节点模式
+#      - "xpack.security.enabled=false" # 关闭认证(生产环境不可)
+#    volumes:
+#      - ../../data/es/data:/usr/share/elasticsearch/data # 数据持久化
+#      - ../../data/es/plugins:/usr/share/elasticsearch/plugins # 插件持久化
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:8.17.4
+#    container_name: gs-kibana
+#    restart: unless-stopped
+#    ports:
+#      - "5601:5601"
+#    networks:
+#      - gs_net
+#    environment:
+#      - "TZ=Asia/Shanghai"
+#      - "I18N_LOCALE=zh-CN"
+#      - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" # elasticsearch host
+#      - "XPACK_SECURITY_ENABLED=false" # 关闭认证(生产环境不可)
+#    depends_on:
+#      - elasticsearch
 networks:
   gs_net:
     driver: bridge

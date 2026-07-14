@@ -20,7 +20,15 @@ message StorageResp {
   int64 id = 1;
 }
 
+message SearchReq {
+
+}
+message SearchResp {
+
+}
+
 // -- service --
 service message {
   rpc storage(StorageReq) returns(StorageResp);
+  rpc search(SearchReq) returns(SearchResp);
 }
